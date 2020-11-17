@@ -1,0 +1,265 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.5.281 Build 20190815
+
+Compiler options: -I/opt/spack/opt/spack/linux-centos8-x86_64/gcc-8.3.1/intel-parallel-studio-cluster-2019.5-orx5jdz226xd547myyzyhe6qd6f7o7xo/compilers_and_libraries_2019.5.281/linux/mpi/intel64/include -Xlinker -rpath=/opt/spack/opt/spack/linux-centos8-x86_64/gcc-8.3.1/intel-parallel-studio-cluster-2019.5-orx5jdz226xd547myyzyhe6qd6f7o7xo/compilers_and_libraries_2019.5.281/linux/compiler/lib/intel64 -std=c++11 -qopenmp -O3 -xHost -qopt-report=5 -qopt-report-phase=vec -qopt-report-file=MemXCT-CPU/src/kernels.o.optrpt -c -o MemXCT-CPU/src/kernels.o
+
+Begin optimization report for: projection(float *, float *)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(73,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(74,7)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(75,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(75,9)
+            remark #15388: vectorization support: reference output[n] has aligned access   [ MemXCT-CPU/src/kernels.cpp(76,11) ]
+            remark #15305: vectorization support: vector length 8
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15449: unmasked aligned unit stride stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 3 
+            remark #15477: vector cost: 0.370 
+            remark #15478: estimated potential speedup: 8.000 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(75,9)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(77,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(78,11)
+            remark #15388: vectorization support: reference input[n] has aligned access   [ MemXCT-CPU/src/kernels.cpp(79,13) ]
+            remark #15389: vectorization support: reference *buffmap[*(*buffmapdispl+buff*8)+n] has unaligned access   [ MemXCT-CPU/src/kernels.cpp(79,28) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15328: vectorization support: irregularly indexed load was emulated for the variable <obj[*(*buffmap+(*(*buffmapdispl+buff*8)+n)*4)]>, part of index is read from memory   [ MemXCT-CPU/src/kernels.cpp(79,24) ]
+            remark #15305: vectorization support: vector length 8
+            remark #15309: vectorization support: normalized vectorization overhead 0.115
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15449: unmasked aligned unit stride stores: 1 
+            remark #15450: unmasked unaligned unit stride loads: 1 
+            remark #15462: unmasked indexed (or gather) loads: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 10 
+            remark #15477: vector cost: 3.250 
+            remark #15478: estimated potential speedup: 2.980 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(78,11)
+         <Remainder loop for vectorization>
+         LOOP END
+
+         LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(81,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(82,13)
+            <Peeled loop for vectorization>
+            LOOP END
+
+            LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(82,13)
+               remark #15389: vectorization support: reference *index[n] has unaligned access   [ MemXCT-CPU/src/kernels.cpp(83,34) ]
+               remark #15388: vectorization support: reference *value[n] has aligned access   [ MemXCT-CPU/src/kernels.cpp(83,44) ]
+               remark #15381: vectorization support: unaligned access used inside loop body
+               remark #15328: vectorization support: irregularly indexed load was emulated for the variable <input[*(*index+n*2)]>, part of index is read from memory   [ MemXCT-CPU/src/kernels.cpp(83,28) ]
+               remark #15305: vectorization support: vector length 16
+               remark #15309: vectorization support: normalized vectorization overhead 1.246
+               remark #15300: LOOP WAS VECTORIZED
+               remark #15442: entire loop may be executed in remainder
+               remark #15448: unmasked aligned unit stride loads: 1 
+               remark #15450: unmasked unaligned unit stride loads: 1 
+               remark #15462: unmasked indexed (or gather) loads: 1 
+               remark #15475: --- begin vector cost summary ---
+               remark #15476: scalar cost: 11 
+               remark #15477: vector cost: 3.560 
+               remark #15478: estimated potential speedup: 2.680 
+               remark #15488: --- end vector cost summary ---
+            LOOP END
+
+            LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(82,13)
+            <Remainder loop for vectorization>
+            LOOP END
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(86,9)
+         remark #15389: vectorization support: reference raypart[start+n] has unaligned access   [ MemXCT-CPU/src/kernels.cpp(88,13) ]
+         remark #15388: vectorization support: reference output[n] has aligned access   [ MemXCT-CPU/src/kernels.cpp(88,32) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.231
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15454: masked aligned unit stride loads: 1 
+         remark #15457: masked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 20 
+         remark #15477: vector cost: 3.250 
+         remark #15478: estimated potential speedup: 5.720 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(86,9)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(104,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(106,7)
+      remark #15389: vectorization support: reference rayrayind[kk] has unaligned access   [ MemXCT-CPU/src/kernels.cpp(107,35) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15328: vectorization support: irregularly indexed load was emulated for the variable <raybuff[*(rayrayind+kk*4)]>, part of index is read from memory   [ MemXCT-CPU/src/kernels.cpp(107,27) ]
+      remark #15305: vectorization support: vector length 16
+      remark #15309: vectorization support: normalized vectorization overhead 1.109
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15462: unmasked indexed (or gather) loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 8 
+      remark #15477: vector cost: 3.430 
+      remark #15478: estimated potential speedup: 2.090 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(106,7)
+   <Remainder loop for vectorization>
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: backprojection(float *, float *)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(122,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between raybuff[k] (124:7) and res[*(rayrecvlist+k*4)] (124:7)
+   remark #15346: vector dependence: assumed ANTI dependence between res[*(rayrecvlist+k*4)] (124:7) and raybuff[k] (124:7)
+LOOP END
+
+LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(122,5)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(151,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(152,7)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(153,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(153,9)
+            remark #15388: vectorization support: reference output[n] has aligned access   [ MemXCT-CPU/src/kernels.cpp(154,11) ]
+            remark #15305: vectorization support: vector length 8
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15449: unmasked aligned unit stride stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 3 
+            remark #15477: vector cost: 0.370 
+            remark #15478: estimated potential speedup: 8.000 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(153,9)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(155,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(156,11)
+            remark #15388: vectorization support: reference input[n] has aligned access   [ MemXCT-CPU/src/kernels.cpp(157,13) ]
+            remark #15389: vectorization support: reference *buffmap[*(*buffmapdispl+buff*8)+n] has unaligned access   [ MemXCT-CPU/src/kernels.cpp(157,32) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15328: vectorization support: irregularly indexed load was emulated for the variable <raypart[*(*buffmap+(*(*buffmapdispl+buff*8)+n)*4)]>, part of index is read from memory   [ MemXCT-CPU/src/kernels.cpp(157,24) ]
+            remark #15305: vectorization support: vector length 8
+            remark #15309: vectorization support: normalized vectorization overhead 0.115
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15449: unmasked aligned unit stride stores: 1 
+            remark #15450: unmasked unaligned unit stride loads: 1 
+            remark #15462: unmasked indexed (or gather) loads: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 10 
+            remark #15477: vector cost: 3.250 
+            remark #15478: estimated potential speedup: 2.980 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(156,11)
+         <Remainder loop for vectorization>
+         LOOP END
+
+         LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(159,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(160,13)
+            <Peeled loop for vectorization>
+            LOOP END
+
+            LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(160,13)
+               remark #15389: vectorization support: reference *index[n] has unaligned access   [ MemXCT-CPU/src/kernels.cpp(161,34) ]
+               remark #15388: vectorization support: reference *value[n] has aligned access   [ MemXCT-CPU/src/kernels.cpp(161,44) ]
+               remark #15381: vectorization support: unaligned access used inside loop body
+               remark #15328: vectorization support: irregularly indexed load was emulated for the variable <input[*(*index+n*2)]>, part of index is read from memory   [ MemXCT-CPU/src/kernels.cpp(161,28) ]
+               remark #15305: vectorization support: vector length 16
+               remark #15309: vectorization support: normalized vectorization overhead 1.246
+               remark #15300: LOOP WAS VECTORIZED
+               remark #15442: entire loop may be executed in remainder
+               remark #15448: unmasked aligned unit stride loads: 1 
+               remark #15450: unmasked unaligned unit stride loads: 1 
+               remark #15462: unmasked indexed (or gather) loads: 1 
+               remark #15475: --- begin vector cost summary ---
+               remark #15476: scalar cost: 11 
+               remark #15477: vector cost: 3.560 
+               remark #15478: estimated potential speedup: 2.680 
+               remark #15488: --- end vector cost summary ---
+            LOOP END
+
+            LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(160,13)
+            <Remainder loop for vectorization>
+            LOOP END
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(164,9)
+         remark #15389: vectorization support: reference gra[start+n] has unaligned access   [ MemXCT-CPU/src/kernels.cpp(166,13) ]
+         remark #15388: vectorization support: reference output[n] has aligned access   [ MemXCT-CPU/src/kernels.cpp(166,28) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.231
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15454: masked aligned unit stride loads: 1 
+         remark #15457: masked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 20 
+         remark #15477: vector cost: 3.250 
+         remark #15478: estimated potential speedup: 5.720 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at MemXCT-CPU/src/kernels.cpp(164,9)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================

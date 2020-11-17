@@ -1,0 +1,23 @@
+# ----- Make Macros -----
+
+CXX = mpicxx
+CXXFLAGS = -std=c++11 -qopenmp
+OPTFLAGS = -O3 -xCORE-AVX2 #-xmic-avx512 -qopt-prefetch=0 -qopt-report=5 -qopt-report-file=$@.optrpt
+
+LD_FLAGS = -qopenmp
+
+TARGETS = build/memxct
+OBJECTS = src/main.o src/vars.h src/raytrace.o src/kernels.o
+
+# ----- Make Rules -----
+
+all:	$(TARGETS)
+
+%.o: %.cpp
+	${CXX} ${CXXFLAGS} ${OPTFLAGS} $^ -c -o $@
+
+build/memxct: $(OBJECTS)
+	$(CXX) -o $@ $(OBJECTS) $(LD_FLAGS)
+
+clean:
+	rm -f $(TARGETS) src/*.o src/*.o.* *.txt *.bin core
