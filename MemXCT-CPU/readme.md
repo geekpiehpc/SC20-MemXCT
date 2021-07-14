@@ -72,7 +72,7 @@ export OUTFILE= output image file path
 #RUN COMMAND COMES HERE
 ```
 
-You should see residual error drops in each iteration.
+The script stored here is the original script provided in the competition.
 
 ## Verify
 

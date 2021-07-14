@@ -1,4 +1,6 @@
-## script specification
+# Reproducibility: Performance Evaluation of MemXCT on Azure CycleCloud Platform
+
+## Specification
 
 ### Compile
 - To compile the code, first use spack to load the Intel parallel studio 2019.5 compiler, then run `make` in the released code folder.
@@ -20,5 +22,6 @@
 - Shell scripts for tuning the parameters on CPU and GPU, comparing performance on single CPU and GPU, and test scalability of weak scaling and strong scaling are put in the `run/script` folder separately.
 - To run the script, e.g. the script `run_tune_params.sh`, one can execute command `./run_tune_params.sh`. Each result of specific parameters are saved in a log file in the `run/output` folder.
 
+## Publication
 
-
+This reproducibility experimental result was performed during the Student Cluster Competition 2020 (SC-20) by the GeekPie_HPC team from ShanghaiTech University. We thank our shepherds and the reviewers for their constructive feedback. We thank the support from ShanghaiTech University. We also want to thank our co-advisor, Mr. Yingdong Zhang from the Library and Information Technology Center, ShanghaiTech University.
